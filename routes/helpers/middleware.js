@@ -10,8 +10,7 @@ module.exports = {
         if (dataCB) {
           data = await dataCB(req);
         }
-
-        return res.send('error');
+        return res.send(errors.errors[0].msg);
       }
       
       next();

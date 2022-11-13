@@ -1,23 +1,20 @@
 const mysql = require('mysql');
-const express = require('express');
-const session = require('express-session');
-const path = require('path');
 
 const db = mysql.createConnection({
   host: 'localhost',
-  user: 'hunter',
-  password: 'password',
-  database: 'watched'
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME
 });
 
-// db.connect(function(err) {
-//   if (err) {
-//     console.error('error connecting: ' + err.stack);
-//     return;
-//   }
+db.connect(function(err) {
+  if (err) {
+    console.error('error connecting: ' + err.stack);
+    return;
+  }
 
-//   console.log('connected as id ' + db.threadId);
-// });
+  console.log('connected as id ' + db.threadId);
+});
 
 module.exports = db;
 

@@ -5,6 +5,7 @@ const signInTemplate = require('../views/auth/signIn');
 const signUpTemplate = require('../views/auth/signUp');
 const db = require('../db/connect');
 const { checkUsername, checkPassword } = require('./helpers/validators');
+const { handleErrors } = require('./helpers/middleware');
 
 const router = express.Router();
 
@@ -47,15 +48,15 @@ router.get('/signup', (req, res) => {
 
 router.post(
   '/signup',
-  checkUsername,
-  checkPassword,
+  [ checkUsername, checkPassword ],
+  handleErrors(),
   async (req, res) => {
     let { firstName, lastName, username, userPassword } = req.body;
     
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(400).send('Fail');
-    }
+    // const errors = validationResult(req);
+    // if (!errors.isEmpty()) {
+    //   return res.status(400).send('Fail');
+    // }
 
     const sqlQuery = 'INSERT INTO users (first_name, last_name, username, password, isAdmin) VALUES (?,?,?,?,0)';
     db.query(sqlQuery, [firstName, lastName, username, userPassword], (error, result) => {
@@ -63,7 +64,7 @@ router.post(
 
       req.session.loggedin = true;
       req.session.username = username;
-      res.send('Success');
+      res.redirect('/home');
     });
   });
 

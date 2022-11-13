@@ -1,6 +1,23 @@
 const db = require('../../db/connect');
 
 module.exports = {
+  async usernameCheck(username) {
+    return new Promise((resolve, reject) => {
+      const sqlQuery = 'SELECT * FROM users WHERE username=?';
+      db.query(sqlQuery, [username], (error, result) => {
+        if (error) {
+          return reject(error)
+        }
+  
+        if (result.length > 0) {
+          return reject();
+        }
+  
+        return resolve()
+      })
+    })
+  },
+
   async getUserID(username) {
     return new Promise((resolve, reject) => {
       const sqlQuery = 'SELECT id FROM watched.users WHERE username=?'
@@ -54,11 +71,6 @@ module.exports = {
         if(error) throw reject(error);
 
         resolve(result);
-      });
-    });
-    db.query('SELECT * FROM watched.users', (error, result) => {
-      result.forEach(element => {
-        console.log(element);
       });
     });
   },

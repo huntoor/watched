@@ -1,8 +1,7 @@
 const express = require("express");
-const mysql = require("mysql");
 const bodyParser = require('body-parser');
 const session = require('express-session');
-const path = require('path');
+require('dotenv').config()
 
 const authRouter = require('./routes/auth');
 const homeRouter = require('./routes/home');
@@ -52,4 +51,4 @@ app.use(homeRouter);
 //   });
 // });
 
-app.listen(3000, () => console.log("Server Up"));
+app.listen(process.env.PORT, () => console.log("Server Up"));
