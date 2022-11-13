@@ -1,0 +1,25 @@
+.floatingBtn{
+	position:fixed;
+	width:60px;
+	height:60px;
+	bottom:40px;
+	right:40px;
+	background-color:rgb(13, 110, 253);
+	color:#FFF;
+	border-radius:50px;
+	text-align:center;
+	box-shadow: 2px 2px 3px #999;
+  transition: 0.3s;
+}
+.floatingBtn:hover {
+  color: rgb(215, 224, 255);
+}
+
+.my-float{
+	margin-top:18px;
+  font-size: 22px;
+}
+
+.hidden {
+	display: none !important;
+}
