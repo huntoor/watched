@@ -76,7 +76,7 @@ module.exports = {
   },
   async getMovies(userID) { 
     return new Promise((resolve, reject) => {
-      const sqlQuery = 'SELECT movie_name,movie_description FROM watched.movies WHERE user_id=?';
+      const sqlQuery = 'SELECT movie_name,movie_description,id FROM watched.movies WHERE user_id=?';
       db.query(sqlQuery, [ userID ], (error, result) => {
         if(error) throw reject(error);
 
@@ -86,7 +86,7 @@ module.exports = {
   },
   async getSeries(userID) { 
     return new Promise((resolve, reject) => {
-      const sqlQuery = 'SELECT series_name,series_description,watched_episodes FROM watched.series WHERE user_id=?';
+      const sqlQuery = 'SELECT series_name,series_description,watched_episodes,id FROM watched.series WHERE user_id=?';
       db.query(sqlQuery, [ userID ], (error, result) => {
         if(error) throw reject(error);
 
@@ -96,12 +96,18 @@ module.exports = {
   },
   async getMatches(userID) {
     return new Promise((resolve, reject) => {
-      const sqlQuery = 'SELECT team_one,team_two,tournament,stadium,date,match_description FROM watched.matches WHERE user_id=? ';
+      const sqlQuery = 'SELECT team_one,team_two,tournament,stadium,date,match_description,id FROM watched.matches WHERE user_id=? ';
       db.query(sqlQuery, [ userID ], (error, result) => {
         if(error) throw reject(error);
 
         resolve(result);
       });
+    });
+   },
+   deleteRow(table, id) {
+    const sqlQuery = `DELETE FROM watched.${table} WHERE id=?`;
+    db.query(sqlQuery, [ id ], (error, result) => {
+      if(error) throw error;
     });
    }
 }

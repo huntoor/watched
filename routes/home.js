@@ -3,7 +3,7 @@ const express = require('express');
 const homePageTemplate = require('../views/main/home');
 const addShowTemplate = require('../views/main/addShow');
 const { requireAuth } = require('./helpers/middleware')
-const { addToDatabase, getUserID, getMovies, getSeries, getMatches } = require('./helpers/dbHelper');
+const { addToDatabase, getUserID, getMovies, getSeries, getMatches, deleteRow } = require('./helpers/dbHelper');
 
 const router = express.Router();
 
@@ -13,21 +13,7 @@ router.get('/home', requireAuth, async (req, res) => {
   const movies = await getMovies(userID)
   const series = await getSeries(userID);
   const matches = await getMatches(userID);
-
-
-  // const myMovies = [
-  //   {
-  //     name: "MyMovie",
-  //     description: "MyDescription",
-  //     episodes: 123
-  //   },
-  //   {
-  //     name: "MyMovie2",
-  //     description: "MyDescription2",
-  //     episodes: 1234
-  //   }
-  // ];
-
+  console.log(movies);
   res.send(homePageTemplate(movies, series, matches));
   // res.send('Holaaaa!');
 });
@@ -41,6 +27,16 @@ router.post('/add', requireAuth, async (req, res) => {
   addToDatabase(req.body, userID);
   // res.redirect('/add');
   res.redirect('/home');
+});
+
+router.post('/home/delete', requireAuth, (req, res) => {
+  const {table, id} = req.body;
+  deleteRow(table, id)
+  res.redirect('/home');
+});
+
+router.post('/home/edit', requireAuth, (req,res) => {
+  res.send('under construction GTFO!!');
 });
 
 module.exports = router;

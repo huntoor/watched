@@ -51,4 +51,5 @@ app.use(homeRouter);
 //   });
 // });
 
-app.listen(process.env.PORT, () => console.log("Server Up"));
+// app.listen(process.env.PORT, () => console.log("Server Up"));
+app.listen(3000, () => console.log("Server Up"));
