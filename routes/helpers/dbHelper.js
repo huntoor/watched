@@ -51,12 +51,17 @@ module.exports = {
         if (error) throw error;
       });
 
+    } else if (body.book_name) {
+      const { book_name, book_auther, book_description } = body;
+      const sqlQuery = 'INSERT INTO watched.books (book_name, book_auther, book_description, user_id) VALUES (?,?,?,?);';
+      db.query(sqlQuery, [ book_name, book_auther, book_description, userID ], (error, result) => {
+        if (error) throw error;
+      })
     } else {
       throw new Error('WTF!!!');
     }
   },
-
-  getFromDatabase(userID, showType) {
+  getFromDatabase(userID, showType) {  // for testing
     return new Promise((resolve, reject) => {
       if (showType === "movie") {
         const sqlQuery = '';
@@ -103,6 +108,16 @@ module.exports = {
         resolve(result);
       });
     });
+   },
+   async getBooks(userID) {
+    return new Promise((resolve, reject) => {
+      const sqlQuery = 'SELECT id,book_name,book_auther,book_description from watched.books WHERE user_id=?';
+      db.query(sqlQuery, [ userID ], (error, result) => {
+        if (error) throw reject(error)
+
+        resolve(result);
+      })
+    })
    },
    deleteRow(table, id) {
     const sqlQuery = `DELETE FROM watched.${table} WHERE id=?`;

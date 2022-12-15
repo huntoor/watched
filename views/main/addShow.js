@@ -10,6 +10,7 @@ module.exports = () => {
           <option value="movie">Movie</option>
           <option value="series">Series</option>
           <option value="match">Match</option>
+          <option value="book">Book</option>
         </select>
         <div class="d-md-flex justify-content-md-end mt-3">
           <button class="btn btn-primary" id="next">Next</button>
@@ -85,7 +86,29 @@ module.exports = () => {
           <button type="submit" class="btn btn-primary" id="sub">Submit</button>
         </div>
       </form>
-      <script src="/js/showSelection.js"></script>
+
+      <form action="" class="text-bg-light p-3 hidden" method="post" id="booksForm">
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="book_name" name="book_name" placeholder="Book Name" required>
+          <label for="book_name">Book Name</label>
+        </div>
+
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="book_auther" name="book_auther" placeholder="Book Auther" required>
+          <label for="book_auther">Book Auther</label>
+        </div>
+        
+        <div class="form-floating">
+          <textarea type="text" class="form-control" id="book_description" name="book_description"
+            placeholder="Book Description" style="height: 100px;"></textarea>
+          <label for="book_description">Book Description</label>
+        </div>
+        <div class="d-md-flex justify-content-md-between mt-3">
+          <button class="btn btn-secondary" id="prev">Previous</button>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </form>
+      <script src="./js/showSelection.js"></script>
     </div>
     `
   });

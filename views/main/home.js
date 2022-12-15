@@ -3,8 +3,9 @@ const layout = require('../layout');
 const renderMovies = require('./render/movies');
 const renderSeries = require('./render/series');
 const renderMatches = require('./render/matches');
+const renderBooks = require('./render/books');
 
-module.exports = (movies, series, matches) => {
+module.exports = (movies, series, matches, books) => {
   // const renderMovies = movies.map(movie => {
   //    return `
   //    <div class="col-3 py-5 mx-5 card text-center">
@@ -30,6 +31,7 @@ module.exports = (movies, series, matches) => {
           ${renderMovies(movies)}
           ${renderSeries(series)}
           ${renderMatches(matches)}
+          ${renderBooks(books)}
         </div>
       </div>
     </div>
