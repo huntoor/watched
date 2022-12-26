@@ -1,4 +1,7 @@
 # Watched
+Watched is a web application helps you in tracking what you have watched from movies, shows, and matches, you aslo can track books that you have read, and you can rate and review whatever you watched or read.
+
+This application was built using MySQL, node, javascript, and bootstrap
 
 ## Mysql
 
