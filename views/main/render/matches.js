@@ -11,10 +11,10 @@ module.exports = (matches) => {
       <p class="card-text mb-1"><span class="fw-semibold">Date: </span>${match.date}</p>
       <p class="card-text">${match.match_description}</p>
       <div class="d-flex justify-content-center">
-        <form action="/home/edit" method="POST">
+        <form action="/home/review" method="POST">
           <input hidden name="id" value="${match.id}" />
           <input hidden name="table" value="matches" />
-          <button class="btn btn-secondary mx-1">Edit</button>
+          <button class="btn btn-secondary mx-1">Review</button>
         </form>
         <form action="/home/delete" method="POST">
           <input hidden name="id" value="${match.id}" />

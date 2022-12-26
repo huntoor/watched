@@ -2,7 +2,9 @@ const express = require('express');
 
 const homePageTemplate = require('../views/main/home');
 const addShowTemplate = require('../views/main/addShow');
-const { requireAuth } = require('./helpers/middleware')
+const addReviewTemplate = require('../views/main/review/addReview');
+const showReviewTemplate = require('../views/main/review/showReview');
+const { requireAuth, checkReview } = require('./helpers/middleware');
 const { addToDatabase,
         getUserID,
         getMovies,
@@ -10,6 +12,7 @@ const { addToDatabase,
         getMatches,
         getBooks,
         deleteRow,
+        addReview
       } = require('./helpers/dbHelper');
 
 const router = express.Router();
@@ -42,8 +45,19 @@ router.post('/home/delete', requireAuth, (req, res) => {
   res.redirect('/home');
 });
 
-router.post('/home/edit', requireAuth, (req, res) => {
-  res.send('under construction GTFO!!');
+router.post('/home/review', requireAuth, checkReview, (req, res) => {});
+
+router.get('/home/addReview', requireAuth, async (req, res) => {
+  const {table ,id, name} = req.session.content;
+  const userID = await getUserID(req.session.username);
+  res.send(addReviewTemplate(name, userID, id, table));
+  
+});
+
+router.post('/home/addReview', requireAuth, async (req, res) => {
+  console.log(req.body);
+  addReview(req.body);
+  res.redirect('/home');
 });
 
 module.exports = router;

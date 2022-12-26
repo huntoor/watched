@@ -2,7 +2,7 @@ const layout = require('../layout');
 
 module.exports = () => {
   return layout({
-    title: 'Watched | Add',
+    title: 'Watched | Add Show',
     content: `
     <div class="container pt-5 w-25">
       <form action="" class="text-bg-light p-3" id="showSelectionForm">

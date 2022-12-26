@@ -10,10 +10,11 @@ module.exports = (series) => {
             <input type="number" class="form-control text-center" placeholder="No of Episodes" name="episodeNo" value="${s.watched_episodes}" disabled>
           </div>
           <div class="d-flex justify-content-center my-3">
-            <form action="/home/edit" method="POST">
+            <form action="/home/review" method="POST">
               <input hidden name="id" value="${s.id}" />
+              <input hidden name="name" value="${s.series_name}" />
               <input hidden name="table" value="series" />
-              <button class="btn btn-secondary mx-1">Edit</button>
+              <button class="btn btn-secondary mx-1">Review</button>
             </form>
             <form action="/home/delete" method="POST">
               <input hidden name="id" value="${s.id}" />

@@ -8,10 +8,11 @@ module.exports = (books) => {
         <h5 class="card-title">written by: ${book.book_auther}</h5>
         <p class="card-text">${book.book_description}</p>
         <div class="d-flex justify-content-center">
-          <form action="/home/edit" method="POST">
+          <form action="/home/review" method="POST">
             <input hidden name="id" value="${book.id}" />
+            <input hidden name="name" value="${book.book_name}" />
             <input hidden name="table" value="books" />
-            <button class="btn btn-secondary mx-1">Edit</button>
+            <button class="btn btn-secondary mx-1">Review</button>
           </form>
           <form action="/home/delete" method="POST">
             <input hidden name="id" value="${book.id}" />

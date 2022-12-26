@@ -7,10 +7,11 @@ module.exports = (movies) => {
           <h5 class="card-title">${movie.movie_name}</h5>
           <p class="card-text">${movie.movie_description}</p>
           <div class="d-flex justify-content-center">
-            <form action="/home/edit" method="POST">
+            <form action="/home/review" method="POST">
               <input hidden name="id" value="${movie.id}" />
+              <input hidden name="name" value="${movie.movie_name}" />
               <input hidden name="table" value="movies" />
-              <button class="btn btn-secondary mx-1">Edit</button>
+              <button class="btn btn-secondary mx-1">Review</button>
             </form>
             <form action="/home/delete" method="POST">
               <input hidden name="id" value="${movie.id}" />
