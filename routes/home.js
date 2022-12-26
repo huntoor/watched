@@ -55,7 +55,6 @@ router.get('/home/addReview', requireAuth, async (req, res) => {
 });
 
 router.post('/home/addReview', requireAuth, async (req, res) => {
-  console.log(req.body);
   addReview(req.body);
   res.redirect('/home');
 });
