@@ -27,6 +27,12 @@ module.exports = () => {
             placeholder="Movie Description" style="height: 100px;"></textarea>
           <label for="movie_description">Movie Description</label>
         </div>
+        <div class="form-check my-3">
+          <input class="form-check-input" type="checkbox" id="want_to_watch_movie" name="want_to_watch_movie">
+          <label class="form-check-label" for="want_to_watch_movie">
+            Want To Watch
+          </label>
+        </div>
         <div class="d-md-flex justify-content-md-between mt-3">
           <button class="btn btn-secondary" id="prev">Previous</button>
           <button type="submit" class="btn btn-primary">Submit</button>
@@ -47,6 +53,12 @@ module.exports = () => {
           <input type="number" class="form-control" id="watched_episodes" name="watched_episodes"
             placeholder="Number Of Episodes Watched" required>
           <label for="watched_episodes">Number Of Episodes Watched</label>
+        </div>
+        <div class="form-check my-3">
+          <input class="form-check-input" type="checkbox" id="want_to_watch_series" name="want_to_watch_series">
+          <label class="form-check-label" for="want_to_watch_series">
+            Want To Watch
+          </label>
         </div>
         <div class="d-md-flex justify-content-md-between mt-3">
           <button class="btn btn-secondary" id="prev">Previous</button>
@@ -80,7 +92,12 @@ module.exports = () => {
             placeholder="Match Description" style="height: 100px;"></textarea>
           <label for="match_description">Match Description</label>
         </div>
-
+        <div class="form-check my-3">
+          <input class="form-check-input" type="checkbox" id="want_to_watch_match" name="want_to_watch_match">
+          <label class="form-check-label" for="want_to_watch_match">
+            Want To Watch
+          </label>
+        </div>
         <div class="d-md-flex justify-content-md-between mt-3">
           <button class="btn btn-secondary" id="prev">Previous</button>
           <button type="submit" class="btn btn-primary" id="sub">Submit</button>
@@ -92,16 +109,20 @@ module.exports = () => {
           <input type="text" class="form-control" id="book_name" name="book_name" placeholder="Book Name" required>
           <label for="book_name">Book Name</label>
         </div>
-
         <div class="form-floating mb-3">
           <input type="text" class="form-control" id="book_auther" name="book_auther" placeholder="Book Auther" required>
           <label for="book_auther">Book Auther</label>
         </div>
-        
         <div class="form-floating">
           <textarea type="text" class="form-control" id="book_description" name="book_description"
             placeholder="Book Description" style="height: 100px;"></textarea>
           <label for="book_description">Book Description</label>
+        </div>
+        <div class="form-check my-3">
+          <input class="form-check-input" type="checkbox" id="want_to_read" name="want_to_read">
+          <label class="form-check-label" for="want_to_read">
+            Want To Read
+          </label>
         </div>
         <div class="d-md-flex justify-content-md-between mt-3">
           <button class="btn btn-secondary" id="prev">Previous</button>

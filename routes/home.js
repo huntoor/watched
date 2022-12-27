@@ -12,7 +12,9 @@ const { addToDatabase,
         getMatches,
         getBooks,
         deleteRow,
-        addReview
+        addReview,
+        isWatched,
+        toggleWatch,
       } = require('./helpers/dbHelper');
 
 const router = express.Router();
@@ -56,6 +58,13 @@ router.get('/home/addReview', requireAuth, async (req, res) => {
 
 router.post('/home/addReview', requireAuth, async (req, res) => {
   addReview(req.body);
+  res.redirect('/home');
+});
+
+router.post('/home/isWatched', requireAuth, async (req, res) => {
+  const {table, id} = req.body;
+  const watchedState = await isWatched(table, id);
+  toggleWatch(table, watchedState, id);
   res.redirect('/home');
 });
 

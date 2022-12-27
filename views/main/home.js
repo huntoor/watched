@@ -34,6 +34,7 @@ module.exports = (movies, series, matches, books) => {
           ${renderBooks(books)}
         </div>
       </div>
+      <script src="./js/isWatched.js"></script>
     </div>
 
     <a href="/add" class="floatingBtn">

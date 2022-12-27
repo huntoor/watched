@@ -22,6 +22,13 @@ module.exports = (matches) => {
           <button class="btn btn-secondary mx-1">Delete</button>
         </form>
       </div>
+      <div class="mt-3">
+        <form action="/home/isWatched" method="POST">
+          <input hidden name="id" value="${match.id}" />
+          <input hidden name="table" value="matches" />
+          <button class="btn mx-1 w-100" id="wantToWatch" value="${match.want_to_watch}"></button>
+        </form>
+      </div>
     </div>
   </div>
     `;

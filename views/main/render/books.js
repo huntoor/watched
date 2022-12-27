@@ -20,6 +20,13 @@ module.exports = (books) => {
             <button class="btn btn-secondary mx-1">Delete</button>
           </form>
         </div>
+        <div class="mt-3">
+        <form action="/home/isWatched" method="POST">
+          <input hidden name="id" value="${book.id}" />
+          <input hidden name="table" value="books" />
+          <button class="btn mx-1 w-100" id="wantToRead" value="${book.want_to_read}"></button>
+        </form>
+      </div>
       </div>
 
     </div>

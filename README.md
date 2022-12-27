@@ -165,3 +165,10 @@ This application was built using MySQL, node, javascript, and bootstrap
 
 	ALTER TABLE `book_review` ADD CONSTRAINT `book_review_fk2` FOREIGN KEY (`user_id`) REFERENCES `users`(`id`);
 ```
+
+```sql
+	ALTER TABLE movies ADD want_to_watch TINYINT(1);
+	ALTER TABLE series ADD want_to_watch TINYINT(1);
+	ALTER TABLE matches ADD want_to_watch TINYINT(1);
+	ALTER TABLE books ADD want_to_read TINYINT(1);
+```
